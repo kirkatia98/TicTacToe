@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=3 uid="uid://6ahfl63cgtwa"]
+
+[ext_resource type="PackedScene" uid="uid://dlr8qb56bf72p" path="res://box.tscn" id="1_ik374"]
+[ext_resource type="PackedScene" uid="uid://dsi1qntxj622m" path="res://player.tscn" id="2_shcjx"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 250.0
+
+[node name="GamePanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Grid" type="GridContainer" parent="GamePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+offset_left = -53.5
+offset_top = -50.5
+offset_right = 53.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 3
+
+[node name="Box" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
+layout_mode = 2
+
+[node name="Box2" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
+layout_mode = 2
+
+[node name="Box3" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
+layout_mode = 2
+
+[node name="Box4" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
+layout_mode = 2
+
+[node name="Box5" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
+layout_mode = 2
+
+[node name="Box6" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
+layout_mode = 2
+
+[node name="Box7" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
+layout_mode = 2
+
+[node name="Box8" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
+layout_mode = 2
+
+[node name="Box9" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
+layout_mode = 2
+
+[node name="Player1" parent="." instance=ExtResource("2_shcjx")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 98.0
+offset_bottom = 62.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Label" parent="Player1" index="0"]
+text = "Player 1"
+
+[node name="Player2" parent="." instance=ExtResource("2_shcjx")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -98.0
+offset_bottom = 62.0
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="Label" parent="Player2" index="0"]
+text = "Player 2"
+
+[editable path="Player1"]
+[editable path="Player2"]
