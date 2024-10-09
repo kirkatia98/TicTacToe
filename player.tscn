@@ -1,19 +1,22 @@
-[gd_scene format=3 uid="uid://dsi1qntxj622m"]
+[gd_scene load_steps=3 format=3 uid="uid://dsi1qntxj622m"]
 
-[node name="Player1" type="MarginContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Script" path="res://player.gd" id="1_x7x0f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qtm45"]
+resource_local_to_scene = true
+
+[node name="Player" type="MarginContainer"]
+offset_right = 98.0
+offset_bottom = 62.0
+pivot_offset = Vector2(49, 35)
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
+script = ExtResource("1_x7x0f")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "test"
-horizontal_alignment = 1
-vertical_alignment = 1
+size_flags_horizontal = 4
+text = "player"
+label_settings = SubResource("LabelSettings_qtm45")

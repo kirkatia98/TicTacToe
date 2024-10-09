@@ -63,29 +63,12 @@ layout_mode = 2
 
 [node name="Player1" parent="." instance=ExtResource("2_shcjx")]
 layout_mode = 1
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 98.0
-offset_bottom = 62.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="Label" parent="Player1" index="0"]
-text = "Player 1"
 
 [node name="Player2" parent="." instance=ExtResource("2_shcjx")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
-anchor_bottom = 0.0
+anchor_right = 1.0
 offset_left = -98.0
-offset_bottom = 62.0
+offset_right = 0.0
 grow_horizontal = 0
-grow_vertical = 1
-
-[node name="Label" parent="Player2" index="0"]
-text = "Player 2"
-
-[editable path="Player1"]
-[editable path="Player2"]

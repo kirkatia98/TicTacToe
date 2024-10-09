@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlr8qb56bf72p"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xj47t"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5htg0"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_46c2d"]
 
 [node name="Box" type="OptionButton"]
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xj47t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5htg0")
 theme_override_icons/arrow = SubResource("ImageTexture_46c2d")
 item_count = 2
 popup/item_0/text = "O"

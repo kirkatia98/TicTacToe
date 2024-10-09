@@ -1,8 +1,25 @@
 extends Control
 class_name HUD
 
-@onready var grid = get_node("GamePanel/Grid")
+@onready var grid = $GamePanel/Grid
+@onready var p1 = $Player1
+@onready var p2 = $Player2
 
+func _ready():
+	p1.label.text = "player 1"
+	p2.label.text = "player 2"
+
+func set_player(player = 0):
+	p1.set_turn(player == 1)
+	p2.set_turn(player == 2)
+
+
+func get_player() -> int:
+	if p1.get_turn():
+		return 1
+	if p2.get_turn():
+		return 2
+	return 0
 
 func clear_board():
 	print("CLEAR BOARD")
