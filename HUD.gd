@@ -2,80 +2,90 @@ extends Control
 class_name HUD
 
 #import shortcuts
-var Player: Dictionary = GameState.Player
-var PlayerText: Dictionary = GameState.PlayerText
+var Player: Dictionary     = GameState.Player
+var PlayerName: Dictionary = GameState.PlayerName
 
 var Value: Dictionary = GameState.Value
 var ValueText: Dictionary = GameState.Value
 
-@onready var grid = $GamePanel/Grid
-@onready var p1 = $Player1
-@onready var p2 = $Player2
+var PlayerToken: Dictionary = GameState.PlayerToken
 
-# set player turn, and use it to flip the button values on signal
+@onready var grid = $GamePanel/Grid
+@onready var p1 = $GamePanel/Player1
+@onready var p2 = $GamePanel/Player2
+
 @onready var player : GameState.Player
+@onready var token : GameState.Value
+
+static var num_rows: int = 3
+static var num_cols: int = 3
 
 
 func _ready():
-	p2.set_player_name(PlayerText[Player.TWO])
-	p1.set_player_name(PlayerText[Player.ONE])
-
-	set_player(Player.ONE)
+	p2.set_player_name(PlayerName[Player.TWO])
+	p1.set_player_name(PlayerName[Player.ONE])
 
 	# connect each button to a lambda function to set itself
-	for i in grid.get_child_count():
-		var box : Box = grid.get_child(i)
+	
+	for y in range(0, num_rows):
+		for x in range(0, num_cols):
+		
+			var box : Box = grid.get_child(x + y * num_rows)
+	
+			var press_callback = func ():
+				set_cell(x, y, token)
+				pass_turn()
+	
+				box.disabled = true
+	
+			box.connect("pressed", press_callback)
+		
+	clear_board()
+	set_player(Player.ONE)
 
-		var press_callback = func ():
-			print("%s set cell %d" % [PlayerText[player], i] )
-			match player:
-				Player.ONE:
-					box.set_value(Value.O)
-					set_player(Player.TWO)
-				Player.TWO:
-					box.set_value(Value.X)
-					set_player(Player.ONE)
-				Player.NONE:
-					assert("No player selected")
-
-			box.disabled = true
-			box.get_draw_mode()
-
-
-		box.connect("pressed", press_callback)
 
 func set_player(p = Player.NONE):
 	player = p
+	token = PlayerToken[p]
+
 	p1.set_turn(p == Player.ONE)
 	p2.set_turn(p == Player.TWO)
 
-
 func get_player() -> GameState.Player:
 	return player
+
+func pass_turn():
+	match player:
+		Player.ONE:
+			set_player(Player.TWO)
+		Player.TWO:
+			set_player(Player.ONE)
+		Player.NONE:
+			assert("No player selected")
 
 func clear_board():
 	print("CLEAR BOARD")
 	for box in grid.get_children():
 		box.set_value(Value.CLEAR)
 
-
-func clear_value(x, y):
+func clear_cell(x, y):
 	print("CLEAR < %d, %d >" % [x, y])
 
-	var box = grid.get_child(x + 3*y)
+	var box = grid.get_child(x + num_rows * y)
 	box.set_value(Value.CLEAR)
 
 
-func set_value(x, y, value: GameState.Value):
-	print("SET < %d, %d >: %s" % [x, y, Value.find_key(value)])
+func set_cell(x, y, val: GameState.Value):
+	print("SET < %d, %d >: %s" % [x, y, Value.find_key(val)])
 
-	var box = grid.get_child(x + 3*y)
-	box.set_value(value)
+	var box = grid.get_child(x + num_rows*y)
+	box.set_value(val)
 
 
-func get_value(x, y) -> GameState.Value:
-	var box = grid.get_child(x + 3*y)
-	var value = box.get_value()
+func get_cell(x, y) -> GameState.Value:
+	var box = grid.get_child(x + num_rows * y)
+	var val = box.get_value()
 
-	print("GET < %d, %d >: %s" % [x, y, Value.find_key(value)])
-	return value
+	print("GET < %d, %d >: %s" % [x, y, Value.find_key(val)])
+	return val
+	

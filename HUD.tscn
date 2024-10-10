@@ -19,6 +19,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Player1" parent="GamePanel" instance=ExtResource("2_shcjx")]
+layout_mode = 1
+offset_bottom = 63.0
+
+[node name="Player2" parent="GamePanel" instance=ExtResource("2_shcjx")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -98.0
+offset_right = 0.0
+offset_bottom = 63.0
+grow_horizontal = 0
+
 [node name="Grid" type="GridContainer" parent="GamePanel"]
 layout_mode = 1
 anchors_preset = -1
@@ -62,15 +76,3 @@ layout_mode = 2
 
 [node name="Box9" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
 layout_mode = 2
-
-[node name="Player1" parent="." instance=ExtResource("2_shcjx")]
-layout_mode = 1
-
-[node name="Player2" parent="." instance=ExtResource("2_shcjx")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -98.0
-offset_right = 0.0
-grow_horizontal = 0

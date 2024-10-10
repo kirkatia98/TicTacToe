@@ -7,7 +7,7 @@ enum Player {
 	TWO = 2,
 }
 
-static var PlayerText: Dictionary = {
+static var PlayerName: Dictionary = {
 	Player.NONE: "_",
 	Player.ONE: "player 1",
 	Player.TWO: "player 2"
@@ -23,4 +23,11 @@ static var ValueText: Dictionary = {
 	Value.CLEAR: "_",
 	Value.O: "O",
 	Value.X: "X"
+}
+
+
+static var PlayerToken : Dictionary = {
+	Player.NONE: Value.CLEAR,
+	Player.ONE: Value.O,
+	Player.TWO: Value.X
 }
