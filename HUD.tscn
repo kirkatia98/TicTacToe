@@ -74,5 +74,3 @@ anchor_right = 1.0
 offset_left = -98.0
 offset_right = 0.0
 grow_horizontal = 0
-
-[connection signal="pressed" from="GamePanel/Grid/Box" to="." method="_on_box_pressed"]

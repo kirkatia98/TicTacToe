@@ -8,7 +8,7 @@ enum Player {
 }
 
 static var PlayerText: Dictionary = {
-	Player.NONE: "",
+	Player.NONE: "_",
 	Player.ONE: "player 1",
 	Player.TWO: "player 2"
 }

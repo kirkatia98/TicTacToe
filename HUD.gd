@@ -22,7 +22,27 @@ func _ready():
 
 	set_player(Player.ONE)
 
+	# connect each button to a lambda function to set itself
+	for i in grid.get_child_count():
+		var box : Box = grid.get_child(i)
 
+		var press_callback = func ():
+			print("%s set cell %d" % [PlayerText[player], i] )
+			match player:
+				Player.ONE:
+					box.set_value(Value.O)
+					set_player(Player.TWO)
+				Player.TWO:
+					box.set_value(Value.X)
+					set_player(Player.ONE)
+				Player.NONE:
+					assert("No player selected")
+
+			box.disabled = true
+			box.get_draw_mode()
+
+
+		box.connect("pressed", press_callback)
 
 func set_player(p = Player.NONE):
 	player = p

@@ -43,19 +43,25 @@ func test_HUD_board():
 	#Clearing a value works
 	assert(%HUD.get_value(1,2) == Value.CLEAR)
 
+	#reset
 	%HUD.clear_board()
 
 
 func test_HUD_players():
+	# Basic sets work
 	%HUD.set_player(1)
 	assert(%HUD.get_player() == 1)
-
 	%HUD.set_player(2)
 	assert(%HUD.get_player() == 2)
 
+	# Double setting works
 	%HUD.set_player(1)
 	%HUD.set_player(1)
 	assert(%HUD.get_player() == 1)
 
+	# Clearing player works
 	%HUD.set_player()
 	assert(%HUD.get_player() == 0)
+
+	#reset
+	%HUD.set_player(1)

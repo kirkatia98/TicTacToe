@@ -1,4 +1,5 @@
 extends Button
+class_name Box
 
 var value: GameState.Value = GameState.Value.CLEAR
 

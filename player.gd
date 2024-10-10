@@ -1,4 +1,5 @@
 extends MarginContainer
+class_name Player
 
 @onready var label   = $Label
 var is_my_turn: bool = false
