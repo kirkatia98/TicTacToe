@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://6ahfl63cgtwa"]
+[gd_scene load_steps=4 format=3 uid="uid://6ahfl63cgtwa"]
 
 [ext_resource type="PackedScene" uid="uid://dlr8qb56bf72p" path="res://box.tscn" id="1_ik374"]
+[ext_resource type="Script" path="res://HUD.gd" id="1_t2rjh"]
 [ext_resource type="PackedScene" uid="uid://dsi1qntxj622m" path="res://player.tscn" id="2_shcjx"]
 
 [node name="HUD" type="Control"]
@@ -8,6 +9,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 200.0
 offset_bottom = 250.0
+script = ExtResource("1_t2rjh")
 
 [node name="GamePanel" type="Panel" parent="."]
 layout_mode = 1
@@ -72,3 +74,5 @@ anchor_right = 1.0
 offset_left = -98.0
 offset_right = 0.0
 grow_horizontal = 0
+
+[connection signal="pressed" from="GamePanel/Grid/Box" to="." method="_on_box_pressed"]
