@@ -1,14 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://6ahfl63cgtwa"]
 
-[ext_resource type="PackedScene" uid="uid://dlr8qb56bf72p" path="res://box.tscn" id="1_ik374"]
 [ext_resource type="Script" path="res://HUD.gd" id="1_t2rjh"]
-[ext_resource type="PackedScene" uid="uid://dsi1qntxj622m" path="res://player.tscn" id="2_shcjx"]
+[ext_resource type="PackedScene" uid="uid://dsi1qntxj622m" path="res://score_manager.tscn" id="2_shcjx"]
+[ext_resource type="PackedScene" uid="uid://cu4onxuvbepea" path="res://grid.tscn" id="3_yss70"]
 
 [node name="HUD" type="Control"]
+texture_filter = 1
 layout_mode = 3
-anchors_preset = 0
-offset_right = 200.0
-offset_bottom = 250.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -125.0
+offset_right = 100.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_t2rjh")
 
 [node name="GamePanel" type="Panel" parent="."]
@@ -33,46 +42,5 @@ offset_right = 0.0
 offset_bottom = 63.0
 grow_horizontal = 0
 
-[node name="Grid" type="GridContainer" parent="GamePanel"]
+[node name="Grid" parent="GamePanel" instance=ExtResource("3_yss70")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.6
-anchor_right = 0.5
-anchor_bottom = 0.6
-offset_left = -53.5
-offset_top = -50.5
-offset_right = 53.5
-offset_bottom = 50.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/h_separation = 4
-theme_override_constants/v_separation = 4
-columns = 3
-
-[node name="Box" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
-layout_mode = 2
-
-[node name="Box2" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
-layout_mode = 2
-
-[node name="Box3" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
-layout_mode = 2
-
-[node name="Box4" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
-layout_mode = 2
-
-[node name="Box5" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
-layout_mode = 2
-
-[node name="Box6" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
-layout_mode = 2
-
-[node name="Box7" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
-layout_mode = 2
-
-[node name="Box8" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
-layout_mode = 2
-
-[node name="Box9" parent="GamePanel/Grid" instance=ExtResource("1_ik374")]
-layout_mode = 2

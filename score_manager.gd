@@ -1,5 +1,5 @@
 extends MarginContainer
-class_name Player
+class_name ScoreManager
 
 @onready var label   = $Label
 var is_my_turn: bool = false
@@ -19,6 +19,7 @@ func set_turn(my_turn : bool):
 	else:
 		label.label_settings.outline_color = Color.WHITE
 		label.label_settings.outline_size = 0
+
 
 
 func get_turn() -> bool:
