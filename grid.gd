@@ -10,7 +10,8 @@ static var num_cols: int = 3
 
 
 # Called when the node enters the scene tree for the first time.
-func connect_callbacks(press_callback: Callable):
+func _ready():
+	var press_callback : Callable = game.test
 
 	for y in range(0, num_rows):
 		for x in range(0, num_cols):
@@ -19,6 +20,7 @@ func connect_callbacks(press_callback: Callable):
 
 			# Bind the button's pressed signal with this button's coords
 			box.pressed.connect(press_callback.bind(x, y))
+
 
 func clear_board():
 	print("CLEAR BOARD")

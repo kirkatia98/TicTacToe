@@ -1,13 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dc7daaa7xqtkj"]
+[gd_scene load_steps=2 format=3 uid="uid://dc7daaa7xqtkj"]
 
 [ext_resource type="PackedScene" uid="uid://6ahfl63cgtwa" path="res://HUD.tscn" id="1_pn8q0"]
-[ext_resource type="Script" path="res://game.gd" id="1_s6pil"]
 
 [node name="Root" type="Node"]
 
 [node name="HUD" parent="." instance=ExtResource("1_pn8q0")]
 unique_name_in_owner = true
-
-[node name="Game" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("1_s6pil")
