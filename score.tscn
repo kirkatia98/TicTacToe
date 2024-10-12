@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsi1qntxj622m"]
+[gd_scene load_steps=3 format=3 uid="uid://c8bnd0xeyml78"]
 
-[ext_resource type="Script" path="res://score_manager.gd" id="1_3p0yq"]
+[ext_resource type="Script" path="res://score.gd" id="1_76vsq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qtm45"]
 resource_local_to_scene = true
 
-[node name="ScoreManager" type="MarginContainer"]
+[node name="Score" type="MarginContainer"]
 offset_right = 98.0
 offset_bottom = 62.0
 pivot_offset = Vector2(49, 35)
@@ -13,7 +13,7 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
-script = ExtResource("1_3p0yq")
+script = ExtResource("1_76vsq")
 
 [node name="Label" type="Label" parent="."]
 texture_filter = 1

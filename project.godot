@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-game="*res://game.gd"
+SM="*res://signal_manager.gd"
 
 [display]
 

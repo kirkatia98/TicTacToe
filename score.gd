@@ -1,5 +1,5 @@
 extends MarginContainer
-class_name ScoreManager
+class_name Score
 
 @onready var label   = $Label
 var is_my_turn: bool = false

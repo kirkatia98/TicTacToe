@@ -11,7 +11,7 @@ static var num_cols: int = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var press_callback : Callable = game.test
+	var press_callback : Callable = SM.move_update
 
 	for y in range(0, num_rows):
 		for x in range(0, num_cols):
@@ -22,8 +22,8 @@ func _ready():
 			box.pressed.connect(press_callback.bind(x, y))
 
 
-func clear_board():
-	print("CLEAR BOARD")
+func clear_grid():
+	print("CLEAR GRID")
 	for box in get_children():
 		box.set_value(Value.CLEAR)
 

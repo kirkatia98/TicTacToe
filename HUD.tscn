@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://6ahfl63cgtwa"]
 
 [ext_resource type="Script" path="res://HUD.gd" id="1_t2rjh"]
-[ext_resource type="PackedScene" uid="uid://dsi1qntxj622m" path="res://score_manager.tscn" id="2_shcjx"]
+[ext_resource type="PackedScene" uid="uid://c8bnd0xeyml78" path="res://score.tscn" id="2_shcjx"]
 [ext_resource type="PackedScene" uid="uid://cu4onxuvbepea" path="res://grid.tscn" id="3_yss70"]
 
 [node name="HUD" type="Control"]
