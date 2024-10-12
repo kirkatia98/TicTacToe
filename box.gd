@@ -10,8 +10,6 @@ func get_value() -> GameState.Value:
 func set_value(v : GameState.Value):
 	value = v
 	text = GameState.ValueText[v]
-	
+
 	#Turn button on/off if it's writen as having a value
 	disabled = (v != GameState.Value.CLEAR)
-
-	

@@ -1,13 +1,14 @@
 extends Node
 
+#import shortcut
 var Player: Dictionary = GameState.Player
 var PlayerName: Dictionary = GameState.PlayerName
-
 var PlayerToken: Dictionary = GameState.PlayerToken
 
 @onready var player : GameState.Player
 @onready var token : GameState.Value
 
+@onready var game : Game = Game.new()
 
 func _ready():
 	clear_board()
@@ -16,9 +17,17 @@ func _ready():
 	SM.MOVE_UPDATE.connect(process_move)
 
 func process_move(x, y):
+	# set UI grid
 	%HUD.grid().set_cell(x, y, token)
-	# TODO: set an internal grid, and check for a win state here
-	pass_turn()
+
+	# set an internal grid
+	game.matrix()[y][x] = token
+
+	# check for a win state
+	if(game.check_win()):
+		set_player(Player.NONE)
+	else:
+		pass_turn()
 
 
 func clear_board():

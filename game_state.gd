@@ -31,3 +31,7 @@ static var PlayerToken : Dictionary = {
 	Player.ONE: Value.O,
 	Player.TWO: Value.X
 }
+
+
+static var NumRows: int = 3
+static var NumCols: int = 3

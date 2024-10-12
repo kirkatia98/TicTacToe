@@ -5,9 +5,8 @@ var Player: Dictionary = GameState.Player
 var PlayerName: Dictionary = GameState.PlayerName
 
 @onready var _grid : Grid = $GamePanel/Grid
-@onready var _p1 : ScoreManager = $GamePanel/Player1
-@onready var _p2 : ScoreManager = $GamePanel/Player2
-
+@onready var _p1 : Score = $GamePanel/Player1
+@onready var _p2 : Score = $GamePanel/Player2
 
 
 func _ready():
