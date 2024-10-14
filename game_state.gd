@@ -14,8 +14,8 @@ static var PlayerName: Dictionary = {
 }
 
 enum Value {
-	CLEAR = -1,
-	O = 0,
+	O = -1,
+	CLEAR = 0,
 	X = 1,
 }
 
@@ -35,3 +35,4 @@ static var PlayerToken : Dictionary = {
 
 static var NumRows: int = 3
 static var NumCols: int = 3
+static var WinLength: int = 3

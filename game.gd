@@ -7,83 +7,92 @@ var ValueText: Dictionary = GameState.ValueText
 
 var NumRows: int = GameState.NumRows
 var NumCols: int = GameState.NumCols
+var WinLength: int = GameState.WinLength
 
-var M : Array
+# game state
+var matrix : Array
+
+# win checking data structures
+var rows: Array
+var cols: Array
+
+var forward_diag : int
+var backward_diag : int
 
 func _init():
-	M = []
-	M.resize(NumRows)
+	matrix = []
+	matrix.resize(NumRows)
 
+	# initialize empty matrix
 	for i in range(0, NumRows):
-		M[i] = []
-		M[i].resize(NumCols)
+		matrix[i] = []
+		matrix[i].resize(NumCols)
 
 		for j in range(0, NumCols):
-			M[i][j] = Value.CLEAR
+			matrix[i][j] = Value.CLEAR
 
-func matrix() -> Array:
-	return M
+	# initialize empty win arrays
+	rows = []
+	rows.resize(NumRows)
+	for i in range(0, NumRows):
+		rows[i] = 0
 
-func print_matrix():
+	cols = []
+	cols.resize(NumCols)
+	for j in range(0, NumCols):
+		cols[j] = 0
+
+	# assume square grid for now
+	forward_diag = 0
+	backward_diag = 0
+
+
+
+func print_game():
 	var matrix_str: String = ""
 
 	for i in range(0, NumRows):
 		for j in range(0, NumCols):
-			var val : GameState.Value = M[i][j]
+			var val : GameState.Value = matrix[i][j]
 			var text : String =         ValueText[val]
 			matrix_str += "| %s " % [text]
 		matrix_str += "|\n"
 
 	print(matrix_str)
 
+func update_game(x: int, y: int, token: GameState.Value):
+	matrix[y][x] = token
+
+	rows[y] += token
+	cols[x] += token
+
+	# assume square grid
+	if (y == x):
+		forward_diag += token
+
+	if (y == (NumRows - 1 - x)):
+		backward_diag += token
+
 
 func check_win() -> bool:
-	var final_win : bool = false
+	var win: bool = false
 
-	# rows
 	for i in range(0, NumRows):
-		var win : bool = true
-		var val : GameState.Value = M[i][0]
-		if (val == Value.CLEAR):
-			break
+		if(abs(rows[i]) == WinLength):
+			win = true
+			print("Win in row %d" % [i+1])
 
-		for j in range(1, NumCols):
-			win = win and val == M[i][j]
-
-		if win:
-			final_win = final_win or win
-			print("Win in row %d" % [i])
-
-	# columns
 	for j in range(0, NumCols):
-		var win : bool = true
-		var val : GameState.Value = M[0][j]
-		if (val == Value.CLEAR):
-			break
+		if(abs(cols[j]) == WinLength):
+			win = true
+			print("Win in col %d" % [j+1])
 
-		for i in range(1, NumRows):
-			win = win and val == M[i][j]
-
-		if win:
-			final_win = final_win or win
-			print("Win in column %d" % [j])
-
-	# diagnals
-	var val1 : GameState.Value = M[0][0]
-	var val2 : GameState.Value = M[0][NumRows - 1]
-
-	var win1: bool = true
-	var win2: bool = true
-
-	for k in range(1, NumRows):
-		win1 = (val1 != Value.CLEAR) and win1 and val1 == M[k][k]
-		win2 = (val2 != Value.CLEAR) and win2 and val2 == M[k][NumRows - k - 1]
-
-	if win1:
+	if(abs(forward_diag) == WinLength):
+		win = true
 		print("Win in forward diagnal")
-	if win2:
+
+	if(abs(backward_diag) == WinLength):
+		win = true
 		print("Win in backward diagnal")
 
-	final_win = final_win or win1 or win2
-
-	return final_win
+	return win

@@ -21,7 +21,7 @@ func process_move(x, y):
 	%HUD.grid().set_cell(x, y, token)
 
 	# set an internal grid
-	game.matrix()[y][x] = token
+	game.update_game(x, y, token)
 
 	# check for a win state
 	if(game.check_win()):
