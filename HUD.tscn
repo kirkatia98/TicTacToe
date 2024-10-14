@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://HUD.gd" id="1_t2rjh"]
 [ext_resource type="PackedScene" uid="uid://c8bnd0xeyml78" path="res://score.tscn" id="2_shcjx"]
-[ext_resource type="PackedScene" uid="uid://cu4onxuvbepea" path="res://grid.tscn" id="3_yss70"]
+[ext_resource type="PackedScene" uid="uid://d1iv3xpukfpdp" path="res://board.tscn" id="3_4212j"]
 
 [node name="HUD" type="Control"]
 texture_filter = 1
@@ -42,5 +42,5 @@ offset_right = 0.0
 offset_bottom = 63.0
 grow_horizontal = 0
 
-[node name="Grid" parent="GamePanel" instance=ExtResource("3_yss70")]
+[node name="Board" parent="GamePanel" instance=ExtResource("3_4212j")]
 layout_mode = 1

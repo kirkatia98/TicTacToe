@@ -4,21 +4,24 @@ class_name HUD
 var Player: Dictionary = GameState.Player
 var PlayerName: Dictionary = GameState.PlayerName
 
-@onready var _grid : Grid = $GamePanel/Grid
-@onready var _p1 : Score = $GamePanel/Player1
-@onready var _p2 : Score = $GamePanel/Player2
+@onready var board : Board = $GamePanel/Board
+@onready var p1 : Score = $GamePanel/Player1
+@onready var p2 : Score = $GamePanel/Player2
 
 
 func _ready():
-	_p2.set_player_name(PlayerName[Player.TWO])
-	_p1.set_player_name(PlayerName[Player.ONE])
+	p2.set_player_name(PlayerName[Player.TWO])
+	p1.set_player_name(PlayerName[Player.ONE])
 
 
-func grid():
-	return _grid
+func set_player( p : GameState.Player ):
+	p1.set_turn(p == Player.ONE)
+	p2.set_turn(p == Player.TWO)
 
-func p1():
-	return _p1
 
-func p2():
-	return _p2
+func update_board(x : int, y : int, token : GameState.Value):
+	board.update_cell(x, y, token)
+
+
+func clear_board():
+	board.clear_grid()
